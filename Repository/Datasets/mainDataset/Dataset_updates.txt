@@ -1,0 +1,2 @@
+04/01/2022: v01
+C_AGB of ref_ID 2627 was removed because it is a duplicate of a WR star.
