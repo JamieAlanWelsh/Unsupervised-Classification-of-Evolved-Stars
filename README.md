@@ -6,5 +6,6 @@ The next-generation of observational astronomy instrumentation is expected to ge
 ## Results
 ![Clustering accuracy](Images/featureExtractionAccuracyTable.PNG)
 
-## Visualization
+## Visualisation
+Original labels (left) in comparison to HDBSCAN clustering after application of UMAP to the featureset (right)
 ![HDBSCAN visualisation with UMAP](Images/UMAP_HDBSCAN_comparison.png)
