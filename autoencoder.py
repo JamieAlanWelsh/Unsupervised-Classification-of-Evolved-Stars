@@ -65,7 +65,7 @@ history = model.fit(
     colors_df,
     colors_df,
     batch_size = 32,
-    epochs = 1000,
+    epochs = 10,
     verbose = 1
     #,validation_data = (colors_df,colors_df)
 )
@@ -77,25 +77,27 @@ review_encoded = encoder.predict(colors_df)
 # =============================================================================
 
 # adding columns
-autoencoder_df = pd.concat([df, pd.DataFrame(review_encoded)], axis=1)
-autoencoder_df = autoencoder_df.rename(columns={0: "d1", 1: "d2", 2: "d3", 3: "d4"})
+df['d1'] = review_encoded[:,0]
+df['d2'] = review_encoded[:,1]
+df['d3'] = review_encoded[:,2]
+df['d4'] = review_encoded[:,3]
 
 # setting the columns that will be accounted for in pca
-feat_cols = ["d1","d2","d3","d4"]
+feat_cols = ['d1','d2','d3','d4']
 
 # we want to reduce to 2 components
 pca = PCA(n_components=2)
 
-pca_result = pca.fit_transform(autoencoder_df[feat_cols].values)
+pca_result = pca.fit_transform(df[feat_cols].values)
 
-autoencoder_df['autoencoder_d1'] = pca_result[:,0]
-autoencoder_df['autoencoder_d2'] = pca_result[:,1] 
+df['autoencoder_d1'] = pca_result[:,0]
+df['autoencoder_d2'] = pca_result[:,1] 
 
 ## =============================================================================
 ## PLOTS
 ## =============================================================================
 
-sns.lmplot(x='autoencoder_d1',y='autoencoder_d2', data=autoencoder_df, hue='source_type', 
+sns.lmplot(x='autoencoder_d1',y='autoencoder_d2', data=df, hue='source_type', 
             fit_reg=False, size=10, scatter_kws={"s": 2})
 ax = plt.gca()
 ax.set_title("Autoencoder")
