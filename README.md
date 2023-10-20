@@ -12,3 +12,5 @@ Original labels (left) in comparison to HDBSCAN clustering after application of 
 
 ## Publications
 [ML4astro Poster](https://JamieAlanWelsh.github.io/Unsupervised-Classification-of-Evolved-Stars/PDF-files/poster.pdf)
+
+[Ml4astro Proceedings Paper](https://link.springer.com/chapter/10.1007/978-3-031-34167-0_12)
